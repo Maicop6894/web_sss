@@ -1,0 +1,78 @@
+
+.cards-wrap {
+  position: relative;
+  margin-top: 20px;
+}
+
+
+.cards {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
+}
+
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+
+.card {
+  flex: 0 0 calc(33.33% - 20px); /* chỉ hiển thị 3 card */
+  /* background: #fff; */
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.6);
+  padding: 20px;
+  border-radius: 14px;
+  scroll-snap-align: center;
+  transition: 0.25s ease;
+  cursor: pointer;
+  border: 1px solid #e5e5e5;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dot.active {
+  background: var(--brand, #007bff);
+  transform: scale(1.3);
+}
+
+
+
+.cards::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+
+
+/* Hover */
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Active (khi click) */
+.card.active {
+  transform: scale(1.05);
+  border-color: #4b7bff;
+  box-shadow: 0 0 20px rgba(75,123,255,0.5);
+}
+

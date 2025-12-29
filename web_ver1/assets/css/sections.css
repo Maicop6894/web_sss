@@ -1,0 +1,26 @@
+section{padding:44px 0;border-top:1px solid rgba(255,255,255,0.03)}
+
+#about h2, #programs h2, #mission h2, #team h2, #contact h2 {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.stat {
+  text-align: center;
+}
+.stat .n {
+  font-size: 32px;
+  font-weight: bold;
+}
+.stat .l { color: var(--muted); }
+
+.person img {
+  border-radius: var(--radius);
+  height: 230px;
+  object-fit: cover;
+}
+
+.info {
+  margin-top: 10px;
+  text-align: center;
+}

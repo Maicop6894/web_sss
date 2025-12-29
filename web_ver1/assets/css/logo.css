@@ -1,0 +1,64 @@
+/* .logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  font-weight: 800;
+  font-size: 18px;
+  color: white;
+} */
+/* 
+.logo {
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  font-weight:800;
+  font-size:18px;
+  color:white} */
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 12px;              /* tạo khoảng thoáng, tự giãn theo chữ */
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.1;
+  width: fit-content;             /* co theo nội dung */
+}
+
+.logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px; /* khoảng cách giữa logo và chữ */
+}
+
+.logo-sub {
+  font-size: 12px;
+  color: #555;
+}
+
+
+.logo-set {
+  text-align: center;
+}
+
+
+.logo span {
+  font-size: 10px;
+  font-weight: 400;
+  margin-top: 2px;
+  opacity: 0.9;
+}
