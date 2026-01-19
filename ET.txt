@@ -1,0 +1,75 @@
+import xml.etree.ElementTree as ET
+
+root = ET.Element("TestSequenceDiagram", name="Demo")
+
+blocks = ET.SubElement(root, "Blocks")
+transitions = ET.SubElement(root, "Transitions")
+
+ET.SubElement(blocks, "Block", id="B_START", type="Start")
+ET.SubElement(blocks, "Block", id="B_END", type="Finalize")
+
+ET.SubElement(transitions, "Transition", from_="B_START", to="B_END")
+
+tree = ET.ElementTree(root)
+tree.write("demo.vtsd", encoding="utf-8", xml_declaration=True)
+
+
+
+
+Attribute vs Text (hay nhầm nhất)
+
+<Set target="VT::USM_KL30" value="On"/>
+
+ET.SubElement(cmds, "Set", target="VT::USM_KL30", value="On")
+
+
+<Value>High</Value>
+
+val = ET.SubElement(cmd, "Value")
+val.text = "High"
+
+
+Các thao tác bạn sẽ dùng LIÊN TỤC
+
+block.find("Commands")
+root.findall(".//Block")
+
+
+Kiểm tra tồn tại (rất quan trọng)
+cmds = block.find("Commands")
+if cmds is None:
+    cmds = ET.SubElement(block, "Commands")
+
+
+xóa node
+
+blocks.remove(block)
+
+
+Pattern chuẩn khi generate VTSD (nên theo)
+7.1. Factory function
+
+def create_block(parent, id, type_, name):
+
+
+    return ET.SubElement(parent, "Block", id=id, type=type_, name=name)
+
+
+Command builder
+
+def add_await_value(block, var, value, timeout):
+    cmds = block.find("Commands") or ET.SubElement(block, "Commands")
+
+    cmd = ET.SubElement(cmds, "AwaitValueMatch")
+    ET.SubElement(cmd, "Variable").text = var
+    ET.SubElement(cmd, "Value").text = value
+    ET.SubElement(cmd, "Timeout", unit="ms").text = str(timeout)
+
+Đọc XML VTSD có sẵn (reverse engineering)
+
+tree = ET.parse("sample_from_vector.vtsd")
+root = tree.getroot()
+
+for block in root.findall(".//Block"):
+    print(block.attrib)
+
